@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class BallMove : MonoBehaviour
 {
     [SerializeField] private Vector2 ballPos;
+
+    private GameObject _brick;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +28,26 @@ public class BallMove : MonoBehaviour
         {
             SceneManager.LoadScene("Main");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("trigger enter");
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("collision enter");
+        if (col.collider.CompareTag("Brick"))
+        {
+            _brick = col.collider.gameObject;
+            Invoke("DestroyBrick", Time.deltaTime * 6);
+        }
+    }
+
+    void DestroyBrick()
+    {
+        Debug.Log("Destroy " + _brick.name);
+        Destroy(_brick);
     }
 }
