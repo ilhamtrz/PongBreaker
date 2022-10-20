@@ -401,9 +401,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 155258872967141347, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
+      propertyPath: dash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155258872967141347, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
       propertyPath: topWall
       value: 
       objectReference: {fileID: 680903677}
+    - target: {fileID: 155258872967141347, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
+      propertyPath: endPos.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 155258872967141347, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
       propertyPath: bottomWall
       value: 
