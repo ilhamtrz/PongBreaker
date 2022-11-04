@@ -16,12 +16,17 @@ public class BrickSpawner : MonoBehaviour
     public Dictionary<Vector2, GameObject> brickDictionary;
     private Dictionary<Vector2, Vector3> _brickPosDictionary;
 
+    private bool generate = true;
+    public bool Generate
+    {
+        get { return generate;  }
+        set { generate = value; }
+    }
+
     private void Start()
     {
         brickDictionary = new Dictionary<Vector2, GameObject>();
         _brickPosDictionary = new Dictionary<Vector2, Vector3>();
-        
-        GenerateBrick();
     }
 
     private void OnDrawGizmos()
@@ -60,9 +65,12 @@ public class BrickSpawner : MonoBehaviour
                 
                 spawned.GetComponent<BrickStatus>().brickManager = brickManager;
                 spawned.GetComponent<BrickStatus>().index = index;
-                
-                brickDictionary.Add(index, spawned);
-                _brickPosDictionary.Add(index, spawned.transform.position);
+
+                if (brickDictionary != null || _brickPosDictionary != null)
+                {
+                    brickDictionary.Add(index, spawned);
+                    _brickPosDictionary.Add(index, spawned.transform.position);
+                }
 
                 newPos.y += brickSize.y / 2 + offset.y;
                 index.y++;
