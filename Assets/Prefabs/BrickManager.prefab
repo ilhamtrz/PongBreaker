@@ -62,3 +62,4 @@ MonoBehaviour:
   ySize: 37.39
   brick: {fileID: 853858498573724087, guid: 0f2c32b9402b16941b5bf8b56b128c32, type: 3}
   offset: {x: 0.2, y: 0.2}
+  canGenerate: 0

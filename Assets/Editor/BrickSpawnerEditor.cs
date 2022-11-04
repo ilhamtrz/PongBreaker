@@ -6,7 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(BrickSpawner))]
 public class BrickSpawnerEditor : Editor
 {
-    
+    bool canGenerate = false;
     public override void OnInspectorGUI()
     {
         base.DrawDefaultInspector();
@@ -18,8 +18,9 @@ public class BrickSpawnerEditor : Editor
         if (myBrickSpawner.ySize < 1) myBrickSpawner.ySize = 1;
         
         GUILayout.Space(20);
+        canGenerate = EditorGUILayout.Toggle("Can Generate", canGenerate);
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Generate") && myBrickSpawner.Generate)
+        if (GUILayout.Button("Generate") && myBrickSpawner.Generate && canGenerate )
         {
             myBrickSpawner.GenerateBrick();
             myBrickSpawner.Generate = false;

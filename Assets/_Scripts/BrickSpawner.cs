@@ -15,7 +15,7 @@ public class BrickSpawner : MonoBehaviour
     
     public Dictionary<Vector2, GameObject> brickDictionary;
     private Dictionary<Vector2, Vector3> _brickPosDictionary;
-
+    
     private bool generate = true;
     public bool Generate
     {
