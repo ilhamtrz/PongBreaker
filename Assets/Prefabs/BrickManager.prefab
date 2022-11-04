@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7039331182033332710}
   - component: {fileID: 7039331182033332711}
+  - component: {fileID: 1111657252}
   m_Layer: 0
   m_Name: BrickManager
   m_TagString: Untagged
@@ -44,7 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854812c0a41fc8b4e98a5a1f612c6ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 2.6
-  ySize: 38
+  brickDestroyed: []
+--- !u!114 &1111657252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039331182033332708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6968cf551973846bdc7183d65f5ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSize: 3.18
+  ySize: 37.39
   brick: {fileID: 853858498573724087, guid: 0f2c32b9402b16941b5bf8b56b128c32, type: 3}
   offset: {x: 0.2, y: 0.2}
