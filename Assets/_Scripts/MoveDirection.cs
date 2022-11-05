@@ -15,9 +15,8 @@ public class MoveDirection : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         
-        var direction = (transform.right * -1) + (transform.up * (Random.value - 0.5f));
+        var direction = (transform.right * -1) + (transform.up * Random.Range(0.3f, 0.6f));
         _rb.AddForce(direction * speed, ForceMode2D.Impulse);
-        
     }
 
 }

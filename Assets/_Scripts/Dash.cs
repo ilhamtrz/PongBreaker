@@ -9,7 +9,7 @@ public class Dash : MonoBehaviour
     public KeyCode key;
 
     [Header("Paddle control")] 
-    public Transform paddle;
+    public Transform sprite;
     public float dashDistance;
 
     [Header("Movement")] 
@@ -21,11 +21,11 @@ public class Dash : MonoBehaviour
     
     private Vector2 _startPos, _destPos;
     private bool canDash = true;
-    private bool collide = false;
+    public bool collide = false;
 
     private void Update()
     {
-        _startPos = paddle.position;
+        _startPos = transform.position;
         _destPos = _startPos + (Vector2)transform.right * dashDistance;
         
         if (Input.GetKeyDown(key) && canDash)
@@ -38,10 +38,10 @@ public class Dash : MonoBehaviour
     IEnumerator DashForward()
     {
         // Check if the position of the cube and sphere are approximately equal.
-        while (Vector2.Distance(transform.position, _destPos) > 0.001f && !collide)
+        while (Vector2.Distance(sprite.position, _destPos) > 0.001f && !collide)
         {
             var step = forwardSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, _destPos, forwradCurve.Evaluate(step));
+            sprite.position = Vector2.MoveTowards(sprite.position, _destPos, forwradCurve.Evaluate(step));
             yield return null;
         }
 
@@ -50,10 +50,10 @@ public class Dash : MonoBehaviour
 
     IEnumerator DashBack()
     {
-        while (Vector2.Distance(transform.position, _startPos) > 0.001f)
+        while (Vector2.Distance(sprite.position, _startPos) > 0.001f)
         {
             var step = backSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, _startPos, backCurve.Evaluate(step));
+            sprite.position = Vector2.MoveTowards(sprite.position, _startPos, backCurve.Evaluate(step));
             yield return null;
         }
 
@@ -61,15 +61,12 @@ public class Dash : MonoBehaviour
         collide = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        collide = true;
-    }
-
     private void OnDrawGizmos()
     {
-        _startPos = paddle.position;
+        _startPos = transform.position;
         _destPos = _startPos + (Vector2)transform.right * dashDistance;
+        
+        Gizmos.color = Color.red;
         Gizmos.DrawSphere(_destPos, 0.1f);
     }
 }
