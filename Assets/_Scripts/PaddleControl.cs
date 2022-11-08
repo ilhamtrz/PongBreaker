@@ -14,15 +14,9 @@ public class PaddleControl : MonoBehaviour
     public GameObject paddleBottom;
     public int size = 1;
 
-    private List<GameObject> paddleBasesTmp = new List<GameObject>();
-    public List<GameObject> PaddleBases
-    {
-        get { return paddleBasesTmp; }
-    }
-
     private void Start()
     {
-        UpdatePaddle(size, paddleBasesTmp);
+        ReSizePaddle(size); 
     }
 
     void Update()
@@ -35,55 +29,22 @@ public class PaddleControl : MonoBehaviour
 
     }
 
-    public void UpdatePaddle(int amount, List<GameObject> bases)
+    public void ReSizePaddle(int newSize)
     {
-        if (amount == 1) return ;
+        var scale = Vector3.one;
+        scale.y *= newSize;
+        paddleBase.transform.localScale = scale;
+
+        var paddleTopPos = paddleBase.transform.position + (Vector3.up * (paddleBase.transform.localScale.y *
+                                                                          (paddleTop.transform.localScale.y / 2)));
+        paddleTopPos.y += (paddleTop.transform.localScale.y / 2);
+        paddleTop.transform.position = paddleTopPos;
         
-        var top = paddleTop.transform.position;
-        var center = paddleBase.transform.position;
-        var bottom = paddleBottom.transform.position;
+        var paddleBotPos = paddleBase.transform.position + (Vector3.up * (-1 * paddleBase.transform.localScale.y *
+                                                                          (paddleBottom.transform.localScale.y / 2)));
+        paddleBotPos.y -= (paddleBottom.transform.localScale.y / 2);
+        paddleBottom.transform.position = paddleBotPos;
 
-        var distanceTop = (top - center);
-        var distanceBot = (bottom - center);
-
-        if (amount < 1)
-        {
-            paddleBase.SetActive(false);
-            paddleTop.transform.position = center + distanceTop/2;
-            paddleBottom.transform.position = center + distanceBot / 2;
-            return ;
-        }
-
-        for (int i = 1; i < amount; i++)
-        {
-            paddleTop.transform.Translate(distanceTop);
-            var spawnedTop = Instantiate(paddleBase, transform);
-            spawnedTop.transform.Translate(top);
-            top = paddleTop.transform.position;
-
-            paddleBottom.transform.Translate(distanceBot);
-            var spawnedBot = Instantiate(paddleBase, transform);
-            spawnedBot.transform.Translate(bottom);
-            bottom = paddleBottom.transform.position;
-            
-            bases.Add(spawnedTop);
-            bases.Add(spawnedBot);
-        }
     }
 
-    public void ResetPadle(List<GameObject> paddleBases)
-    {
-        var count = paddleBases.Count;
-        for (int i = count; i > 0; i--)
-        {
-            DestroyImmediate(paddleBases[i-1].gameObject);
-        }
-        paddleBase.SetActive(true);
-        paddleTop.transform.position = paddleBase.transform.position + Vector3.up;
-        paddleBottom.transform.position = paddleBase.transform.position - Vector3.up;
-        
-        paddleBases.Clear();
-    }
-
-    
 }
