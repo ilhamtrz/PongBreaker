@@ -101,6 +101,42 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -399,7 +435,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_14
+      name: fire_powerup
       rect:
         serializedVersion: 2
         x: 64
@@ -420,7 +456,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_15
+      name: ice_powerup
       rect:
         serializedVersion: 2
         x: 80
@@ -525,7 +561,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_20
+      name: regen_powerup2
       rect:
         serializedVersion: 2
         x: 80
@@ -609,7 +645,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprites_24
+      name: regen_powerup
       rect:
         serializedVersion: 2
         x: 80
@@ -746,7 +782,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       sprites_17: 819256715
-      sprites_22: 3459505
+      sprites_23: 1773635184
       sprites_25: -244790101
       sprites_1: 1249380402
       sprites_27: 158918148
@@ -757,24 +793,24 @@ TextureImporter:
       sprites_28: -1555506749
       sprites_10: -1160941487
       paddle_base: 900284433
-      sprites_15: -1751892111
       paddle_top: -362762003
+      regen_powerup: -1202924866
       sprites_0: -1408817262
       sprites_16: 901514564
       sprites_9: -232855616
-      sprites_24: -1202924866
       sprites_2: 234954473
+      regen_powerup2: 19189642
       sprites_5: -1811770087
       sprites_3: -825717132
       brick: -1624233199
       sprites_4: 948972651
       sprites_7: -1312340866
+      fire_powerup: 345159880
       sprites_6: 1812994013
-      sprites_14: 345159880
-      sprites_20: 19189642
       sprites_21: -1798521504
+      ice_powerup: -1751892111
       paddle_bottom: 1980212254
-      sprites_23: 1773635184
+      sprites_22: 3459505
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
