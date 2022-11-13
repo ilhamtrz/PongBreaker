@@ -18,10 +18,12 @@ public class Dash : MonoBehaviour
     
     public AnimationCurve backCurve;
     public float backSpeed;
+    public bool collide = false;
+
+    [Header("VFX")] public ParticleSystem trail;
     
     private Vector2 _startPos, _destPos;
     private bool canDash = true;
-    public bool collide = false;
 
     private void Update()
     {
@@ -30,6 +32,7 @@ public class Dash : MonoBehaviour
         
         if (Input.GetKeyDown(key) && canDash)
         {
+            trail.Play();
             canDash = false;
             StartCoroutine(DashForward());
         }
@@ -45,6 +48,7 @@ public class Dash : MonoBehaviour
             yield return null;
         }
 
+        trail.Stop();
         yield return StartCoroutine(DashBack());
     }
 
@@ -59,6 +63,7 @@ public class Dash : MonoBehaviour
 
         canDash = true;
         collide = false;
+        
     }
 
     private void OnDrawGizmos()

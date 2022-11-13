@@ -11,6 +11,7 @@ public class BrickStatus : MonoBehaviour
 
     private void OnDestroy()
     {
-        brickManager.brickDestroyed.Add(index);
+        brickManager.Score += brickManager.scorePerBrick;
+        brickManager.brickDestroyed.Enqueue(index);
     }
 }
