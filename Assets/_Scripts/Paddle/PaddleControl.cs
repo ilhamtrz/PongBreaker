@@ -9,6 +9,7 @@ public class PaddleControl : MonoBehaviour
     public float speed;
 
     [Header("Paddle Settings")] 
+    public bool isPlayer1;
     public GameObject paddleTop;
     public GameObject paddleBase;
     public GameObject paddleBottom;
@@ -24,9 +25,16 @@ public class PaddleControl : MonoBehaviour
         // TODO: move paddle up and down
         // use player input
         // give value from -1f to 1f
-        var verticalInput = Input.GetAxis("VerticalPlayer1");
-        transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World);
-
+        if (isPlayer1)
+        {
+            var verticalInput = Input.GetAxis("VerticalPlayer1");
+            transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World);
+        }
+        else
+        {
+           var verticalInput = Input.GetAxis("VerticalPlayer2");
+            transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World); 
+        }
     }
 
     public void ReSizePaddle(int newSize)
