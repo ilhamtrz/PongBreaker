@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+    
     public bool timerOn = true;
     
-    public TextMeshProUGUI timerUI;
     public int timeMatch = 99;
     
     public float timeMinus = 1;
@@ -16,9 +17,14 @@ public class GameManager : MonoBehaviour
 
     private float elapsedTime;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void OnDrawGizmos()
     {
-        lamaMatchMinute = timeMatch * timeMinus * 0.01666666666f;
+        lamaMatchMinute = timeMatch * timeMinus * 0.01666666666f; // * 1/60
     }
 
     private void Update()
@@ -37,6 +43,5 @@ public class GameManager : MonoBehaviour
             timeMatch--;
             elapsedTime = 0;
         }
-        timerUI.text = timeMatch.ToString();
     }
 }

@@ -10,6 +10,7 @@ public class Dash : MonoBehaviour
 
     [Header("Paddle control")] 
     public Transform sprite;
+    public Transform root;
     public float dashDistance;
 
     [Header("Movement")] 
@@ -27,7 +28,7 @@ public class Dash : MonoBehaviour
 
     private void Update()
     {
-        _startPos = transform.position;
+        _startPos = root.position;
         _destPos = _startPos + (Vector2)transform.right * dashDistance;
         
         if (Input.GetKeyDown(key) && canDash)

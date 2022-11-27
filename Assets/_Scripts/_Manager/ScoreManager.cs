@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance;
+        
     [Header("Player")]
     //
     public GameObject player1;
@@ -22,11 +24,12 @@ public class ScoreManager : MonoBehaviour
     [Header("Score")]
     //
     public int score1;
-    public TextMeshProUGUI scoreUI1;
-
-    [Space(20f)]
     public int score2;
-    public TextMeshProUGUI scoreUI2;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -38,8 +41,5 @@ public class ScoreManager : MonoBehaviour
     {
         score1 = _brickManager1.Score;
         score2 = _brickManager2.Score;
-
-        scoreUI1.text = (score1 > 9) ? score1.ToString() : "0" + score1;
-        scoreUI2.text = (score2 > 9) ? score2.ToString() : "0" + score2;
     }
 }
