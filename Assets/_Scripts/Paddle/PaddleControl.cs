@@ -15,9 +15,13 @@ public class PaddleControl : MonoBehaviour
     public GameObject paddleBottom;
     public int size = 1;
 
+    public TopDownBorder topBorder, botBorder;
+
     private void Start()
     {
-        ReSizePaddle(size); 
+        ReSizePaddle(size);
+        topBorder = paddleTop.GetComponent<TopDownBorder>();
+        botBorder = paddleBottom.GetComponent<TopDownBorder>();
     }
 
     void Update()
@@ -28,11 +32,15 @@ public class PaddleControl : MonoBehaviour
         if (isPlayer1)
         {
             var verticalInput = Input.GetAxis("VerticalPlayer1");
+            verticalInput = BorderInput(verticalInput);
+            
             transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World);
         }
         else
         {
            var verticalInput = Input.GetAxis("VerticalPlayer2");
+           verticalInput = BorderInput(verticalInput);
+           
             transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World); 
         }
     }
@@ -52,7 +60,19 @@ public class PaddleControl : MonoBehaviour
                                                                           (paddleBottom.transform.localScale.y / 2)));
         paddleBotPos.y -= (paddleBottom.transform.localScale.y / 2);
         paddleBottom.transform.position = paddleBotPos;
+        
+        // Vfx shape size
+        GetComponent<Dash>().trail.transform.localScale = new Vector3(size, 1, 1);
 
+    }
+
+    public float BorderInput(float verticalInput)
+    {
+        if (topBorder.onWall) return verticalInput * 0.5f - 0.5f;
+        
+        if (botBorder.onWall) return verticalInput * 0.5f + 0.5f;
+        
+        return verticalInput;
     }
 
 }
