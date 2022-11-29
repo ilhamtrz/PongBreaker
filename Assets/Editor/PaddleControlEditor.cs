@@ -11,20 +11,14 @@ public class PaddleControlEditor : Editor
         base.DrawDefaultInspector();
 
         var myPaddleControl = (PaddleControl) target;
+
+        if (myPaddleControl.size < 0) myPaddleControl.size = 0;
+        myPaddleControl.ReSizePaddle(myPaddleControl.size);
         
         GUILayout.Space(20);
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Generate") )
-        {
-            myPaddleControl.ResetPadle(myPaddleControl.PaddleBases);
-            myPaddleControl.UpdatePaddle(myPaddleControl.size, myPaddleControl.PaddleBases);
-        }
-
         if (GUILayout.Button("Reset"))
         {
-            myPaddleControl.ResetPadle(myPaddleControl.PaddleBases);
             myPaddleControl.size = 1;
         }
-        GUILayout.EndHorizontal();
     }
 }
