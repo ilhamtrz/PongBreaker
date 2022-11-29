@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IcePU : MonoBehaviour
 {
-    public PowerUpManager manager;
+    public PowerUpManagerNew manager;
     public GameObject paddle1;
     public GameObject paddle2;
 
