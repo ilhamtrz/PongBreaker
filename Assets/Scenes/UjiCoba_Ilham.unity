@@ -13089,6 +13089,14 @@ PrefabInstance:
       propertyPath: dashDistance
       value: 9.76
       objectReference: {fileID: 0}
+    - target: {fileID: 291060502219310662, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
+      propertyPath: botBorder
+      value: 
+      objectReference: {fileID: 495422647}
+    - target: {fileID: 291060502219310662, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
+      propertyPath: topBorder
+      value: 
+      objectReference: {fileID: 2104249955}
     - target: {fileID: 291060502219310663, guid: a3aded0db6d6ac347a3b8b42171317a5, type: 3}
       propertyPath: m_RootOrder
       value: 2
