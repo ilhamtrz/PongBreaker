@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 122450604315787326}
   - component: {fileID: 122450604315787325}
-  - component: {fileID: 122450604315787324}
   m_Layer: 0
   m_Name: PowerUpManager
   m_TagString: Untagged
@@ -45,17 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206ab777427dc614c87e11cf8f322f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerup: {fileID: 4414998390563900354, guid: d621896bd88eed4439e852d5c546e49c, type: 3}
---- !u!114 &122450604315787324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122450604315787323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea0a90ba4d1d1e4482f1b1cba9179e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 10, y: 20}
+  spawnArea: {fileID: 0}
+  maxPowerUpAmount: 0
+  spawnInterval: 0
+  powerUpAreaMin: {x: 0, y: 0}
+  powerUpAreaMax: {x: 0, y: 0}
+  powerUpTemplateList: []

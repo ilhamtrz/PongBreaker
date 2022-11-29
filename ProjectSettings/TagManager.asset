@@ -8,6 +8,7 @@ TagManager:
   - Paddle
   - Ball
   - Wall
+  - PowerUp
   layers:
   - Default
   - TransparentFX
