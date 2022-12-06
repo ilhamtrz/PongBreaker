@@ -9,6 +9,7 @@ public class PowerUpManagerNew : MonoBehaviour
     public int spawnInterval;
     public Vector2 powerUpAreaMin;
     public Vector2 powerUpAreaMax;
+    public PaddleControl enemyPaddle;
     public List<GameObject> powerUpTemplateList;
 
     private List<GameObject> powerUpList;
@@ -33,7 +34,10 @@ public class PowerUpManagerNew : MonoBehaviour
         {
             GenerateRandomPowerUp();
             timer -= spawnInterval;
-            Debug.Log(powerUpList[0].transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            enemyPaddle.ActivateIcePU();
         }
     }
 
