@@ -8,7 +8,13 @@ public class TopDownBorder : MonoBehaviour
     public bool onWall;
     private void OnTriggerEnter2D(Collider2D col)
     {
-        onWall = true;
+        if(col.CompareTag("Wall"))
+            onWall = true;
+    }
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if(col.CompareTag("Wall"))
+            onWall = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)

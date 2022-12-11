@@ -295,8 +295,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,8 +316,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -526,8 +526,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -782,7 +782,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       sprites_17: 819256715
-      sprites_23: 1773635184
+      paddle_bottom: 1980212254
       sprites_25: -244790101
       sprites_1: 1249380402
       sprites_27: 158918148
@@ -808,9 +808,8 @@ TextureImporter:
       fire_powerup: 345159880
       sprites_6: 1812994013
       sprites_21: -1798521504
-      ice_powerup: -1751892111
-      paddle_bottom: 1980212254
       sprites_22: 3459505
+      sprites_23: 1773635184
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
