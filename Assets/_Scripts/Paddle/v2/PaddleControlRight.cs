@@ -31,7 +31,7 @@ public class PaddleControlRight : MonoBehaviour
 
     private void Update()
     {
-        verticalMove = Input.GetAxis("VerticalPlayer1");
+        verticalMove = Input.GetAxis("VerticalPlayer2");
         if (Input.GetKeyDown(keyDash) && dashState == DashState.Ready)
         {
             dashState = DashState.Dashing;
