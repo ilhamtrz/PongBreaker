@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4810904333504585653}
   - component: {fileID: 4810904333504585612}
-  - component: {fileID: 4810904333504585615}
   - component: {fileID: 4810904333504585614}
   - component: {fileID: 4810904333504585609}
   - component: {fileID: 4810904333504585608}
   - component: {fileID: 4810904333504585611}
-  - component: {fileID: 4810904333504585610}
   m_Layer: 0
   m_Name: Base
   m_TagString: PaddleRight
@@ -78,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 900284433, guid: 6cb5df16dc28dd946a5e8c151aef9d2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -90,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4810904333504585615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810904333504585652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54c785d06f105c47b43068eb3e8b24b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paddleTop: {fileID: 4810904334779479090}
-  paddleBottom: {fileID: 4810904333945736164}
 --- !u!114 &4810904333504585614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,13 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9c2f14e85a4a1ab13487973524703b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titkAwal: {fileID: 0}
-  titikAkhir: {fileID: 0}
-  keyDash: 32
+  titikAwal: {fileID: 4810904334837960014}
+  titikAkhir: {fileID: 4810904334803152718}
+  paddleTop: {fileID: 4810904334779479090}
+  paddleBottom: {fileID: 4810904333945736164}
+  keyDash: 276
   speed: 20
-  dashSpeed: 20
+  dashSpeed: 40
   coolDownDash: 1
-  dashState: 0
 --- !u!50 &4810904333504585609
 Rigidbody2D:
   serializedVersion: 4
@@ -142,7 +127,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4810904333504585608
 BoxCollider2D:
@@ -196,25 +181,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4810904333504585610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810904333504585652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9c2f14e85a4a1ab13487973524703b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  titkAwal: {fileID: 0}
-  titikAkhir: {fileID: 0}
-  keyDash: 32
-  speed: 20
-  dashSpeed: 20
-  coolDownDash: 3
-  dashState: 0
 --- !u!1 &4810904333945736167
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4810904334803152718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.080601, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -438,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4810904334837960014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08060074, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,6 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4810904335526345786}
+  - component: {fileID: 6422510223404870052}
   m_Layer: 0
   m_Name: PaddleRight
   m_TagString: Untagged
@@ -481,3 +448,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6422510223404870052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810904335526345765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54c785d06f105c47b43068eb3e8b24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paddleControl: {fileID: 0}
+  keyDash: 276
+  speed: 20
+  dashSpeed: 40
+  coolDownDash: 1

@@ -19,7 +19,7 @@ public class BrickSpawnerEditor : Editor
         if (GUILayout.Button("Generate"))
         {
             DestroyAllBrick();
-            myBrickSpawner.GenerateBrick();
+            myBrickSpawner.GenerateBrickOnEditMode();
         }
 
     }

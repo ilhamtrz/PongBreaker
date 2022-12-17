@@ -7,19 +7,20 @@ using Random = UnityEngine.Random;
 
 public class BrickManager : MonoBehaviour
 {
+
     public int scorePerBrick = 1;
-    public Queue<Vector2> brickDestroyed;
+    public Queue<Vector2> BrickDestroyed;
 
     private int _score;
     public int Score
     {
         get { return _score;}
         set { _score = value; }
-    } 
+    }
 
     private void Start()
     {
-        brickDestroyed = new Queue<Vector2>();
+        BrickDestroyed = new Queue<Vector2>();
     }
 
 }

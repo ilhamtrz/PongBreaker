@@ -7,43 +7,28 @@ using Random = UnityEngine.Random;
 public class Ball : MonoBehaviour
 {
     public float movementSpeed;
+    public float speedUpValue;
+
+    private float _startMovementSpeed;
+    private Vector2 _startVelocity;
 
     private Rigidbody2D rb2D;
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        rb2D.velocity = new Vector2(-1, Random.value * 0.5f) * movementSpeed;
+        InitMove();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         // Hit the left Racket?
-        if (col.CompareTag("PaddleLeft")) {
-            Debug.Log("test");
-            // Calculate hit Factor
-            float y = hitFactor(transform.position,
-                col.transform.position,
-                col.bounds.size.y);
-
-            // Calculate direction, make length=1 via .normalized
-            Vector2 dir = new Vector2(-1, y).normalized;
-
-            // Set Velocity with dir * speed
-            rb2D.velocity = dir * movementSpeed;
+        if (col.CompareTag("PaddleLeft"))
+        {
+            ChangeDirection(-1, col.transform.position, col.bounds.size.y);
         }
 
         // Hit the right Racket?
         if (col.CompareTag("PaddleRight")) {
-            // Calculate hit Factor
-            float y = hitFactor(transform.position,
-                col.transform.position,
-                col.bounds.size.y);
-
-            // Calculate direction, make length=1 via .normalized
-            Vector2 dir = new Vector2(1, y).normalized;
-
-            // Set Velocity with dir * movementSpeed
-            rb2D.velocity = dir * movementSpeed;
+            ChangeDirection(1, col.transform.position, col.bounds.size.y);
         }
     }
 
@@ -54,40 +39,62 @@ public class Ball : MonoBehaviour
         //   col.gameObject is the racket
         //   col.transform.position is the racket's position
         //   col.collider is the racket's collider
-        
+
+        if (col.collider.CompareTag("Brick"))
+        {
+            ResetMovementSpeed();
+        }
 
         // Hit the left Racket?
-        if (col.collider.CompareTag("PaddleLeft")) {
-            Debug.Log("test");
-            // Calculate hit Factor
-            float y = hitFactor(transform.position,
-                col.transform.position,
-                col.collider.bounds.size.y);
-
-            // Calculate direction, make length=1 via .normalized
-            Vector2 dir = new Vector2(1, y).normalized;
-
-            // Set Velocity with dir * speed
-            rb2D.velocity = dir * movementSpeed;
+        if (col.collider.CompareTag("PaddleLeft")){
+            ChangeDirection(1, col.transform.position, col.collider.bounds.size.y);
+            SpeedUp(speedUpValue);
         }
 
         // Hit the right Racket?
         if (col.collider.CompareTag("PaddleRight")) {
-            // Calculate hit Factor
-            float y = hitFactor(transform.position,
-                col.transform.position,
-                col.collider.bounds.size.y);
-
-            // Calculate direction, make length=1 via .normalized
-            Vector2 dir = new Vector2(-1, y).normalized;
-
-            // Set Velocity with dir * movementSpeed
-            rb2D.velocity = dir * movementSpeed;
+            ChangeDirection(-1, col.transform.position, col.collider.bounds.size.y);
+            SpeedUp(speedUpValue);
         }
     }
 
-    float hitFactor(Vector2 ballPos, Vector2 racketPos,
-        float racketHeight) {
+    private void InitMove()
+    {
+        rb2D                = GetComponent<Rigidbody2D>();
+        rb2D.velocity       = new Vector2(-1, Random.value * 0.5f) * movementSpeed;
+        _startMovementSpeed = movementSpeed;
+        _startVelocity      = rb2D.velocity;
+    }
+
+    private void SpeedUp(float speed)
+    {
+        movementSpeed += speed;
+    }
+
+    private void ResetMovementSpeed()
+    {
+        movementSpeed = _startMovementSpeed;
+        rb2D.velocity = _startVelocity;
+    }
+
+    private void ChangeDirection(float x, Vector2 racketPos, float racketHeight)
+    {
+        // Calculate hit Factor
+        float y = 
+            HitFactor(
+                transform.position,
+                racketPos,
+                racketHeight
+                );
+
+        // Calculate direction, make length=1 via .normalized
+        Vector2 dir = new Vector2(x, y).normalized;
+
+        // Set Velocity with dir * speed
+        rb2D.velocity = dir * movementSpeed;
+    }
+
+    private float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight) {
         // ascii art:
         // ||  1 <- at the top of the racket
         // ||

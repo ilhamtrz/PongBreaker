@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489143762932179569}
+  - component: {fileID: 352752370522908380}
   m_Layer: 0
   m_Name: PaddleLeft
   m_TagString: Untagged
@@ -120,6 +121,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352752370522908380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214221764089853425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54c785d06f105c47b43068eb3e8b24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paddleControl: {fileID: 1205971453022310071}
+  keyDash: 100
+  speed: 20
+  dashSpeed: 40
+  coolDownDash: 1
 --- !u!1 &4230936759592988421
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4230936759592988421}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.080601, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4782029261060111352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08060074, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -192,14 +210,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4692525771285043845}
   - component: {fileID: 4258674412480657991}
-  - component: {fileID: 3011015349582621327}
   - component: {fileID: 1205971453022310071}
   - component: {fileID: 4699129275493542166}
   - component: {fileID: 2334090073929885059}
   - component: {fileID: 3913789861543701025}
   m_Layer: 0
   m_Name: Base
-  m_TagString: PaddleRight
+  m_TagString: PaddleLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +276,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 900284433, guid: 6cb5df16dc28dd946a5e8c151aef9d2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -271,20 +288,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3011015349582621327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240767272455719815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54c785d06f105c47b43068eb3e8b24b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paddleTop: {fileID: 4021753975624476495}
-  paddleBottom: {fileID: 4428095112040489958}
 --- !u!114 &1205971453022310071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,13 +300,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c20a04e8eb3f440b877d4f4b28484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titkAwal: {fileID: 4782029261060111352}
+  titikAwal: {fileID: 4782029261060111352}
   titikAkhir: {fileID: 4230936759592988421}
+  paddleTop: {fileID: 4021753975624476495}
+  paddleBottom: {fileID: 4428095112040489958}
   keyDash: 100
   speed: 20
-  dashSpeed: 20
+  dashSpeed: 40
   coolDownDash: 1
-  dashState: 0
 --- !u!50 &4699129275493542166
 Rigidbody2D:
   serializedVersion: 4
@@ -323,7 +327,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &2334090073929885059
 BoxCollider2D:

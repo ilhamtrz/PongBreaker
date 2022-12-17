@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,45 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
 
-    public Transform paddleTop;
-    public Transform paddleBottom;
+    public PaddleControl paddleControl;
+    
+    [Header("Key Code")]
+    public KeyCode keyDash;
+    
+    [Header("Status")] 
+    public int size = 2;
+    
+    [Header("Movement")]
+    public float speed;
+    public float dashSpeed;
+    public float coolDownDash;
 
-    void LateUpdate()
+    private void Start()
     {
-        var y = transform.localScale.y / 2 + 0.1f;
-        paddleTop.position    = LocalToWorld(transform, new Vector2(0, y));
-        paddleBottom.position = LocalToWorld(transform, new Vector2(0, -y));
+        Resize(size);
     }
 
-    Vector2 LocalToWorld(Transform root ,Vector2 local)
+    private void Update()
     {
-        var worldPos = root.position;
-        worldPos += root.right * local.x;
-        worldPos += root.up * local.y;
-        
-        return worldPos;
+        SetVariables();
+    }
+    
+
+    private void SetVariables()
+    {
+        paddleControl.keyDash      = keyDash;
+        paddleControl.speed        = speed;
+        paddleControl.dashSpeed    = dashSpeed;
+        paddleControl.coolDownDash = coolDownDash;
+    }
+
+    private void Resize(int newSize)
+    {
+        paddleControl.transform.localScale =
+            new Vector3(
+                1,
+                newSize,
+                1)
+            ;
     }
 }

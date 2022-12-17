@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        CreateInstance();
     }
 
     private void Start()
@@ -41,5 +41,10 @@ public class ScoreManager : MonoBehaviour
     {
         score1 = _brickManager1.Score;
         score2 = _brickManager2.Score;
+    }
+    
+    private void CreateInstance()
+    {
+        Instance = this;
     }
 }

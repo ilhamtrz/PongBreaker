@@ -8,18 +8,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
-    public bool timerOn = true;
-    
-    public int timeMatch = 99;
-    
+    public bool timerOn    = true;
+    public int timeMatch   = 99;
     public float timeMinus = 1;
-    public float lamaMatchMinute;
+    
+    [SerializeField] private float lamaMatchMinute;
 
-    private float elapsedTime;
+    private float _elapsedTime;
 
     private void Awake()
     {
-        Instance = this;
+        CreateInstance();
     }
 
     private void OnDrawGizmos()
@@ -27,21 +26,21 @@ public class GameManager : MonoBehaviour
         lamaMatchMinute = timeMatch * timeMinus * 0.01666666666f; // * 1/60
     }
 
-    private void Update()
-    {
-        UpdateTimer();
-    }
-
     void UpdateTimer()
     {
         if (!timerOn) return;
         if (timeMatch <= 0) return;
             
-        elapsedTime += Time.deltaTime;
-        if (elapsedTime >= timeMinus)
+        _elapsedTime += Time.deltaTime;
+        if (_elapsedTime >= timeMinus)
         {
             timeMatch--;
-            elapsedTime = 0;
+            _elapsedTime = 0;
         }
+    }
+    
+    private void CreateInstance()
+    {
+        Instance = this;
     }
 }
