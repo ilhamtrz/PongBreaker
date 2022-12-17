@@ -7,6 +7,7 @@ public class PaddleControl : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+    private float initSpeed;
 
     [Header("Paddle Settings")] 
     public bool isPlayer1;
@@ -17,11 +18,18 @@ public class PaddleControl : MonoBehaviour
 
     public TopDownBorder topBorder, botBorder;
 
+    public float IcePUTimer;
+    private float IcePUTimerInit;
+    private bool isIceTimer;
+
     private void Start()
     {
         ReSizePaddle(size);
         topBorder = paddleTop.GetComponent<TopDownBorder>();
         botBorder = paddleBottom.GetComponent<TopDownBorder>();
+        initSpeed = speed;
+        isIceTimer = false;
+        IcePUTimerInit = IcePUTimer;
     }
 
     void Update()
@@ -42,6 +50,14 @@ public class PaddleControl : MonoBehaviour
            verticalInput = BorderInput(verticalInput);
            
             transform.Translate(Vector3.up * (Time.deltaTime * speed * verticalInput), Space.World); 
+        }
+        if (isIceTimer)
+        {
+            IcePUTimer -= 1 * Time.deltaTime;
+            if(IcePUTimer <= 0)
+            {
+                DeactivateIcePU();
+            }
         }
     }
 
@@ -75,4 +91,17 @@ public class PaddleControl : MonoBehaviour
         return verticalInput;
     }
 
+    public void ActivateIcePU()
+    {
+        isIceTimer = true;
+        speed = speed / 2;
+        Debug.Log("Ice PU Activated");
+    }
+    public void DeactivateIcePU()
+    {
+        isIceTimer = false;
+        IcePUTimer = IcePUTimerInit;
+        speed = initSpeed;
+        Debug.Log("Ice PU Deactivated");
+    }
 }

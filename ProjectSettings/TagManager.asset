@@ -8,6 +8,8 @@ TagManager:
   - Paddle
   - Ball
   - Wall
+  - PaddleLeft
+  - PaddleRight
   - PowerUp
   layers:
   - Default
