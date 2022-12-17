@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PowerUpManagerNew : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class PowerUpManagerNew : MonoBehaviour
     public int spawnInterval;
     public Vector2 powerUpAreaMin;
     public Vector2 powerUpAreaMax;
-    public PaddleControl enemyPaddle;
+    public PaddleControlOld enemyPaddle;
     public List<GameObject> powerUpTemplateList;
 
     private List<GameObject> powerUpList;
