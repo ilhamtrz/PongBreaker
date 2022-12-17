@@ -10,7 +10,7 @@ public class IcePU : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Paddle"))
+        if(collision.CompareTag("PaddleLeft") || collision.CompareTag("PaddleRight"))
         {
             manager.RemovePowerUp(gameObject);
         }

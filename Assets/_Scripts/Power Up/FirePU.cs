@@ -10,7 +10,7 @@ public class FirePU : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision == paddle1 || collision == paddle2)
+        if(collision.CompareTag("PaddleLeft") || collision.CompareTag("PaddleRight"))
         {
             manager.RemovePowerUp(gameObject);
         }

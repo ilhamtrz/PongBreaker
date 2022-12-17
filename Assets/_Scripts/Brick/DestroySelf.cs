@@ -22,8 +22,8 @@ public class DestroySelf : MonoBehaviour
 
     IEnumerator Breaking()
     {
-        yield return new WaitForSeconds(delayDestroy);
         FindObjectOfType<AudioManager>().Play("brick");
+        yield return new WaitForSeconds(delayDestroy);
         Destroy(gameObject);
     }
 }

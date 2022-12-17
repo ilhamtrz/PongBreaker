@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaddleControl : MonoBehaviour
+public class PaddleControlOld : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
