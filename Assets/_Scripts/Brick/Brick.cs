@@ -11,11 +11,16 @@ public class Brick : MonoBehaviour
     private BrickStatus _brickStatus;
     private Sprite _startSprite;
 
-    private void Start()
+    private void Init()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _brickStatus    = GetComponent<BrickStatus>();
         _startSprite    = _spriteRenderer.sprite;
+    }
+    
+    private void Start()
+    {
+        Init();
     }
 
     private void OnCollisionEnter2D(Collision2D col)

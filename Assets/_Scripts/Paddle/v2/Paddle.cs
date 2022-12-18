@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-
     public PaddleControl paddleControl;
     
     [Header("Key Code")]
@@ -13,22 +12,31 @@ public class Paddle : MonoBehaviour
     
     [Header("Status")] 
     public int size = 2;
+    public PowerupState powerupState;
     
     [Header("Movement")]
     public float speed;
     public float dashSpeed;
     public float coolDownDash;
 
+    private float _startSpeed;
+    
     private void Start()
     {
-        Resize(size);
+        Init();
     }
 
     private void Update()
     {
         SetVariables();
     }
-    
+
+    private void Init()
+    {
+        Resize(size);
+        ChangePowerupState(PowerupState.Nothing);
+        _startSpeed = speed;
+    }
 
     private void SetVariables()
     {
@@ -42,9 +50,21 @@ public class Paddle : MonoBehaviour
     {
         paddleControl.transform.localScale =
             new Vector3(
-                1,
+                paddleControl.transform.localScale.x,
                 newSize,
                 1)
             ;
     }
+
+    public void ChangePowerupState(PowerupState value)
+    {
+        powerupState = value;
+    }
+}
+
+public enum PowerupState
+{
+    Nothing,
+    Ice,
+    Fire
 }

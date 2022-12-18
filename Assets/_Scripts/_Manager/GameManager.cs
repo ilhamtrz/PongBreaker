@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         lamaMatchMinute = timeMatch * timeMinus * 0.01666666666f; // * 1/60
     }
 
+    private void Update()
+    {
+        UpdateTimer();
+    }
+
     void UpdateTimer()
     {
         if (!timerOn) return;

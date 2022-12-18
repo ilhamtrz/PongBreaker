@@ -20,9 +20,7 @@ public class BrickSpawner : MonoBehaviour
 
     private void Start()
     {
-        _brickManager       = GetComponent<BrickManager>();
-        _brickDictionary    = new Dictionary<Vector2, GameObject>();
-        _brickPosDictionary = new Dictionary<Vector2, Vector3>();
+        Init();
         
         ClearBrickOnEditMode();
         GenerateBrick();
@@ -36,6 +34,13 @@ public class BrickSpawner : MonoBehaviour
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(center, new Vector3(xSize,ySize,1));
+    }
+
+    private void Init()
+    {
+        _brickManager       = GetComponent<BrickManager>();
+        _brickDictionary    = new Dictionary<Vector2, GameObject>();
+        _brickPosDictionary = new Dictionary<Vector2, Vector3>();
     }
 
     public void GenerateBrick()
