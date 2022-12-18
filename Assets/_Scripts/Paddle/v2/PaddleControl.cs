@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PaddleControl : MonoBehaviour
 {
-    public GameObject titikAwal, titikAkhir;
+    [Header("References")] 
+    public GameObject titikAwal;
+    public GameObject titikAkhir;
     public Transform paddleTop;
     public Transform paddleBottom;
     
@@ -15,6 +17,10 @@ public class PaddleControl : MonoBehaviour
     public float speed;
     public float dashSpeed;
     public float coolDownDash;
+    
+    [Header("Powerup")]
+    public PowerupState powerupState;
+    public bool isTerbakar = false;
     
     protected float VerticalMove;
     protected Rigidbody2D Rb2D;
@@ -68,6 +74,12 @@ public class PaddleControl : MonoBehaviour
         {
             ChangeDashState(DashState.DashingBack);
         }
+
+        if (col.collider.CompareTag("Ball") && powerupState == PowerupState.Fire)
+        {
+            isTerbakar = true;
+        }
+
     }
 
     private void MoveUpDown()

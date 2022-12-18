@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegenPU : MonoBehaviour
+public class RegenPU : BasePU
 {
-    public PowerUpManagerNew manager;
-    public GameObject paddle1;
-    public GameObject paddle2;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void PowerUpPayload()
     {
-        if (collision == paddle1 || collision == paddle2)
-        {
-            manager.RemovePowerUp(gameObject);
-        }
+        base.PowerUpPayload();
+        
+        manager.brickSpawner.ReGenerateBrickDestroyed();
+        
+        Debug.Log("Regenerasi brick");
     }
 }
