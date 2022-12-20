@@ -100,6 +100,7 @@ public class BrickSpawner : MonoBehaviour
             spawned.GetComponent<BrickStatus>().index = index; 
 
             _brickManager.BrickDestroyed.Dequeue();
+            _brickManager.Score -= _brickManager.scorePerBrick;
         }
     }
 
