@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour
+public class UIGameplay : MonoBehaviour
 {
-    public GameObject mainMenu;
-    public GameObject credit;
-    public GameObject gameMode;
-<<<<<<< Updated upstream
     public GameObject pausedMenu;
     public GameManager gameManager;
+    public ScoreManager scoreManager;
     public GameObject gameOver;
+    public GameObject winner1;
+    public GameObject winner2;
+    public GameObject draw;
     private bool Paused;
 
 void Start()
@@ -41,43 +41,17 @@ void Update()
 
         if(gameManager.timeMatch <= 0)
         {
-            Time.timeScale = 0f;
             gameOver.SetActive(true);
+            Time.timeScale = 0f;
+            if(scoreManager.score1 > scoreManager.score2){
+                winner1.SetActive(true);
+            }
+            if(scoreManager.score1 < scoreManager.score2){
+                winner2.SetActive(true);
+            }
         }
     }
-=======
-    public GameObject gameOver;
->>>>>>> Stashed changes
 
-    public void PlayGame()
-    {
-        gameMode.SetActive(true);
-    }
-    public void singleMode()
-    {
-        SceneManager.LoadScene("UjiCoba_Adam");
-    }
-    public void multiMode()
-    {
-        SceneManager.LoadScene("UjiCoba_multiplayer");
-    }
-    public void OpenAuthor()
-    {
-        Debug.Log(" Sebelumnya Created by Ilham Triza Kurniawan");
-    }
-
-    public void OpenCredit()
-    {
-        mainMenu.SetActive(false);
-        credit.SetActive(true);
-    }
-    public void BackToMenu()
-    {
-        mainMenu.SetActive(true);
-        credit.SetActive(false);
-        gameMode.SetActive(false);
-    }
-<<<<<<< Updated upstream
     public void OpenPaused()
     {
         pausedMenu.SetActive(true);
@@ -92,7 +66,4 @@ void Update()
     {
         SceneManager.LoadScene("Main Menu");
     }
-=======
-    
->>>>>>> Stashed changes
 }
