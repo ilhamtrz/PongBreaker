@@ -40,8 +40,8 @@ Material:
     m_Floats:
     - _DissolveScale: 50
     m_Colors:
-    - _Color01: {r: 17.19697, g: 2.5210218, b: 15.036095, a: 0}
-    - _Color02: {r: 8.688882, g: 1.2141669, b: 1.1382815, a: 0}
+    - _Color01: {r: 22.742706, g: 22.742706, b: 22.742706, a: 0}
+    - _Color02: {r: 1.5868393, g: 11.60034, b: 7.005968, a: 0}
     - _DissolveSpeed: {r: -1, g: 0, b: 0, a: 0}
     - _MainTexSpeed: {r: -0.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

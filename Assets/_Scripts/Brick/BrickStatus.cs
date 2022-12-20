@@ -9,8 +9,13 @@ public class BrickStatus : MonoBehaviour {
     public BrickManager brickManager;
     public Vector2 index;
 
-    private void OnDestroy() {
+    public void UpdateScore()
+    {
         brickManager.Score += brickManager.scorePerBrick;
-        brickManager.brickDestroyed.Enqueue(index);
+    }
+
+    public void EnqueueBrickDestroyed()
+    {
+        brickManager.BrickDestroyed.Enqueue(index);
     }
 }

@@ -13,13 +13,17 @@ public class BrickSpawner : MonoBehaviour
     public GameObject brick;
     public Vector2 offset;
     
-    public Dictionary<Vector2, GameObject> brickDictionary;
+    private Dictionary<Vector2, GameObject> _brickDictionary;
     private Dictionary<Vector2, Vector3> _brickPosDictionary;
+
+    private BrickManager _brickManager;
 
     private void Start()
     {
-        brickDictionary = new Dictionary<Vector2, GameObject>();
-        _brickPosDictionary = new Dictionary<Vector2, Vector3>();
+        Init();
+        
+        ClearBrickOnEditMode();
+        GenerateBrick();
     }
 
     private void OnDrawGizmos()
@@ -31,15 +35,19 @@ public class BrickSpawner : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(center, new Vector3(xSize,ySize,1));
     }
-    
+
+    private void Init()
+    {
+        _brickManager       = GetComponent<BrickManager>();
+        _brickDictionary    = new Dictionary<Vector2, GameObject>();
+        _brickPosDictionary = new Dictionary<Vector2, Vector3>();
+    }
+
     public void GenerateBrick()
     {
-        BrickManager brickManager = GetComponent<BrickManager>();
-        
         Vector3 brickSize = brick.transform.localScale;
-        
-        Vector3 newPos = Vector3.zero;
-        Vector2 index = new Vector2(0,0);
+        Vector3 newPos    = Vector3.zero;
+        Vector2 index     = new Vector2(0,0);
         
         while (newPos.x < xSize)
         {
@@ -56,14 +64,11 @@ public class BrickSpawner : MonoBehaviour
                 spawned.transform.position += newPos;
                 spawned.name = "Brick " + index.x + ","+ index.y;
                 
-                spawned.GetComponent<BrickStatus>().brickManager = brickManager;
+                spawned.GetComponent<BrickStatus>().brickManager = _brickManager;
                 spawned.GetComponent<BrickStatus>().index = index;
 
-                if (brickDictionary != null || _brickPosDictionary != null)
-                {
-                    brickDictionary.Add(index, spawned);
-                    _brickPosDictionary.Add(index, spawned.transform.position);
-                }
+                _brickDictionary.Add(index, spawned);
+                _brickPosDictionary.Add(index, spawned.transform.position);
 
                 newPos.y += brickSize.y / 2 + offset.y;
                 index.y++;
@@ -74,6 +79,86 @@ public class BrickSpawner : MonoBehaviour
             
             index.x++;
             index.y = 0;
+        }
+    }
+
+    public void ReGenerateBrickDestroyed()
+    {
+        Queue<Vector2> brickDestroyed = _brickManager.BrickDestroyed;
+        if (brickDestroyed.Count > 0)
+        {
+            Vector2 index = brickDestroyed.Peek();
+            
+            Debug.Log("Regenerate Brick Index: " + index.x + ","+ index.y);
+
+            Vector3 newPos = _brickPosDictionary[index];
+            
+            var spawned = Instantiate(brick, newPos, Quaternion.identity, transform);
+            spawned.name = "Brick " + index.x + ","+ index.y;
+                
+            spawned.GetComponent<BrickStatus>().brickManager = _brickManager;
+            spawned.GetComponent<BrickStatus>().index = index; 
+
+            _brickManager.BrickDestroyed.Dequeue();
+            _brickManager.Score -= _brickManager.scorePerBrick;
+        }
+    }
+
+    public void ReGenerateBrickDisabled()
+    {
+        Queue<Vector2> brickDestroyed = _brickManager.BrickDestroyed;
+        if (brickDestroyed.Count > 0)
+        {
+            Vector2 index = brickDestroyed.Peek();
+            
+            Debug.Log("Regenerate Brick Index: " + index.x + ","+ index.y);
+
+            GameObject oneBrick = _brickDictionary[index];
+
+            oneBrick.GetComponent<Brick>().EnableObject();
+
+            _brickManager.BrickDestroyed.Dequeue();
+        }
+    }
+    
+    public void GenerateBrickOnEditMode()
+    {
+        Vector3 brickSize = brick.transform.localScale;
+        Vector3 newPos    = Vector3.zero;
+        Vector2 index     = new Vector2(0,0);
+        
+        while (newPos.x < xSize)
+        {
+            newPos.x += brickSize.x / 2;
+            
+            while (newPos.y < ySize)
+            {
+                newPos.y += brickSize.y / 2;
+
+                if (newPos.y >  ySize || newPos.x > xSize)
+                    break;
+
+                var spawned = Instantiate(brick, transform);
+                spawned.transform.position += newPos;
+                spawned.name = "Brick " + index.x + ","+ index.y;
+
+                newPos.y += brickSize.y / 2 + offset.y;
+                index.y++;
+            }
+
+            newPos.x += brickSize.x / 2 + offset.x;
+            newPos.y = 0;
+            
+            index.x++;
+            index.y = 0;
+        }
+    }
+
+    private void ClearBrickOnEditMode()
+    {
+        for (int i = transform.childCount; i > 0; i--)
+        {
+            Destroy(transform.GetChild(i-1).gameObject);
         }
     }
 }

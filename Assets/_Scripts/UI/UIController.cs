@@ -8,42 +8,7 @@ public class UIController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject credit;
     public GameObject gameMode;
-    public GameObject pausedMenu;
-    public GameManager gameManager;
     public GameObject gameOver;
-    private bool Paused;
-
-void Start()
-    {
-        Paused = false;
-        pausedMenu.SetActive(false);
-        Time.timeScale = 1.0f;
-    }
-
-void Update()
-    {
-        if(Input.GetKeyDown("escape"))
-        {
-            if(Paused == true)
-            {
-                pausedMenu.SetActive(false);
-                Time.timeScale = 1.0f;
-                Paused = false;
-            }
-            else
-            {
-                pausedMenu.SetActive(true);
-                Time.timeScale = 0f;
-                Paused = true;
-            }
-        }
-
-        if(gameManager.timeMatch <= 0)
-        {
-            Time.timeScale = 0f;
-            gameOver.SetActive(true);
-        }
-    }
 
     public void PlayGame()
     {
@@ -73,18 +38,5 @@ void Update()
         credit.SetActive(false);
         gameMode.SetActive(false);
     }
-    public void OpenPaused()
-    {
-        pausedMenu.SetActive(true);
-        Time.timeScale = 0f;
-    }
-    public void BackToGameplay()
-    {
-        pausedMenu.SetActive(false);
-        Time.timeScale = 1.0f;
-    }
-    public void Exit()
-    {
-        SceneManager.LoadScene("Main Menu");
-    }
+    
 }
