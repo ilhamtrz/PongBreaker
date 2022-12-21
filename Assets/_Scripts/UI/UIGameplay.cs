@@ -49,6 +49,9 @@ void Update()
             if(scoreManager.score1 < scoreManager.score2){
                 winner2.SetActive(true);
             }
+            if(scoreManager.score1 == scoreManager.score2){
+                draw.SetActive(true);
+            }
         }
     }
 
@@ -64,6 +67,6 @@ void Update()
     }
     public void Exit()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 }
