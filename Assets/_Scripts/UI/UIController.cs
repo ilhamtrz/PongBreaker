@@ -8,7 +8,6 @@ public class UIController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject credit;
     public GameObject gameMode;
-    public GameObject gameOver;
 
     public void PlayGame()
     {
@@ -37,6 +36,11 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(true);
         credit.SetActive(false);
         gameMode.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
     
 }
