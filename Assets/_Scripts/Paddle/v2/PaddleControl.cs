@@ -39,6 +39,7 @@ public class PaddleControl : MonoBehaviour
         if (Input.GetKeyDown(keyDash) && _dashState == DashState.Ready)
         {
             ChangeDashState(DashState.Dashing);
+            AudioManager.Instance.Play("dash");
         }
     }
 
@@ -78,6 +79,7 @@ public class PaddleControl : MonoBehaviour
         if (col.collider.CompareTag("Ball") && powerupState == PowerupState.Fire)
         {
             isTerbakar = true;
+            AudioManager.Instance.Play("explotion");
         }
 
     }

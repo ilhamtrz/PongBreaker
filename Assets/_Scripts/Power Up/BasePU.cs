@@ -93,6 +93,9 @@ public class BasePU : MonoBehaviour
     
     protected virtual void PowerUpEffects ()
     {
+        
+        AudioManager.Instance.Play("pickup");
+        
         if (specialEffect != null)
         {
             Instantiate (specialEffect, transform.position, transform.rotation, transform);

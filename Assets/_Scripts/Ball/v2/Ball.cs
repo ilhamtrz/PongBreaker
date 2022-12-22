@@ -40,6 +40,11 @@ public class Ball : MonoBehaviour
         //   col.transform.position is the racket's position
         //   col.collider is the racket's collider
 
+        if (col.collider.CompareTag("Wall"))
+        {
+            AudioManager.Instance.Play("dinding");
+        }
+
         if (col.collider.CompareTag("Brick"))
         {
             ResetMovementSpeed();
@@ -79,6 +84,7 @@ public class Ball : MonoBehaviour
 
     private void ChangeDirection(float x, Vector2 racketPos, float racketHeight)
     {
+        AudioManager.Instance.Play("paddle");
         // Calculate hit Factor
         float y = 
             HitFactor(

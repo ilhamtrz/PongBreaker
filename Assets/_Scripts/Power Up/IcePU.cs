@@ -50,6 +50,8 @@ public class IcePU : BasePU
         
         _enemy.ChangePowerupState(PowerupState.Ice);
         _enemy.Resize(2);
+        
+        AudioManager.Instance.Play("freeze");
     }
 
     protected override void PowerUpPayload()
