@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIGameplay : MonoBehaviour
+public class Pause : MonoBehaviour
 {
     public GameObject pausedMenu;
-    public GameManager gameManager;
-    public ScoreManager scoreManager;
-    public GameObject gameOver;
-    public GameObject winner1;
-    public GameObject winner2;
-    public GameObject draw;
     private bool Paused;
 
-void Start()
+    void Start()
     {
         Paused = false;
         pausedMenu.SetActive(false);
@@ -22,11 +16,11 @@ void Start()
         Debug.Log("mulai UI Gameplay");
     }
 
-void Update()
+    void Update()
     {
-        if(Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("escape"))
         {
-            if(Paused == true)
+            if (Paused == true)
             {
                 pausedMenu.SetActive(false);
                 Time.timeScale = 1.0f;
@@ -40,20 +34,6 @@ void Update()
             }
         }
 
-        if(gameManager.timeMatch <= 0)
-        {
-            gameOver.SetActive(true);
-            Time.timeScale = 0f;
-            if(scoreManager.score1 > scoreManager.score2){
-                winner1.SetActive(true);
-            }
-            if(scoreManager.score1 < scoreManager.score2){
-                winner2.SetActive(true);
-            }
-            if(scoreManager.score1 == scoreManager.score2){
-                draw.SetActive(true);
-            }
-        }
     }
 
     public void OpenPaused()
@@ -66,7 +46,8 @@ void Update()
         pausedMenu.SetActive(false);
         Time.timeScale = 1.0f;
     }
-    public void Exit()
+
+    public void BackToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }

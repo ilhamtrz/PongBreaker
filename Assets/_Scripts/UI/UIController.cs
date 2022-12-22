@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour
     }
     public void multiMode()
     {
-        SceneManager.LoadScene("UjiCoba_multiplayer");
+        SceneManager.LoadScene("UjiCoba_Dimas");
     }
     public void OpenAuthor()
     {
