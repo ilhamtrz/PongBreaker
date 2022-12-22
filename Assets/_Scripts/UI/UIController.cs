@@ -15,11 +15,11 @@ public class UIController : MonoBehaviour
     }
     public void singleMode()
     {
-        SceneManager.LoadScene("UjiCoba_Adam");
+        SceneManager.LoadScene("Singleplayer");
     }
     public void multiMode()
     {
-        SceneManager.LoadScene("UjiCoba_Dimas");
+        SceneManager.LoadScene("Multiplayer");
     }
     public void OpenAuthor()
     {
